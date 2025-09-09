@@ -10,16 +10,18 @@ const CartRenderer = {
 
     renderCartItems(items) {
         this.cartItemsContainer.innerHTML = ''; // 기존 목록 초기화
+
         if (items.length === 0) {
             this.cartItemsContainer.innerHTML = '<li class="no-items">장바구니에 상품이 없습니다.</li>';
             this.allSelectCheckbox.checked = false;
-            this.allSelectCheckbox.disabled = true;
-            this.deleteSelectedBtn.disabled = true;
-            return;
-        } else {
-            this.allSelectCheckbox.disabled = false;
-            this.deleteSelectedBtn.disabled = false;
+            this.allSelectCheckbox.disabled = true; // 상품이 없을 때 전체 선택 체크박스 비활성화
+            this.deleteSelectedBtn.disabled = true; // 상품이 없을 때 삭제 버튼 비활성화
+            return; // 상품이 없으면 더 이상 렌더링할 필요 없음
         }
+
+        // 상품이 있을 경우
+        this.allSelectCheckbox.disabled = false; // 상품이 있다면 전체 선택 체크박스 활성화
+        this.deleteSelectedBtn.disabled = false; // 상품이 있다면 삭제 버튼 활성화
 
         items.forEach(item => {
             const li = document.createElement('li');
@@ -55,7 +57,10 @@ const CartRenderer = {
     },
 
     renderAllSelectCheckbox(isAllSelected) {
-        this.allSelectCheckbox.checked = isAllSelected;
+        // 상품이 없을 때는 App.js에서 비활성화하므로, 여기서는 단순히 체크 상태만 업데이트
+        if (this.allSelectCheckbox.disabled === false) { // 상품이 있을 때만 체크 상태 변경
+            this.allSelectCheckbox.checked = isAllSelected;
+        }
     },
 
     // 이벤트 리스너는 App.js에서 중앙 관리
