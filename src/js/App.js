@@ -9,6 +9,7 @@ const App = {
 
     init() {
         this.cartItems = CartStore.initCartData();
+        console.log("Loaded Cart Items:", this.cartItems); // 이 줄을 추가
         this.updateCartUI();
         this.addEventListeners();
     },
