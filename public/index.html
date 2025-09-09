@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장바구니</title>
+    <link rel="stylesheet" href="./src/css/style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>장바구니</h1>
+
+        <div class="cart-header">
+            <label class="checkbox-container">
+                <input type="checkbox" id="all-select-checkbox">
+                <span class="checkmark"></span>
+                전체 선택
+            </label>
+            <button class="delete-selected-btn">선택 상품 삭제</button>
+        </div>
+
+        <ul id="cart-items">
+            <!-- 장바구니 상품 목록이 여기에 렌더링됩니다. -->
+        </ul>
+
+        <div class="cart-summary">
+            <div class="summary-item">
+                <span>상품 금액 합계</span>
+                <span id="selected-items-total">0원</span>
+            </div>
+            <div class="summary-item">
+                <span>배송비</span>
+                <span id="shipping-fee">0원</span>
+            </div>
+            <div class="summary-item total-payment">
+                <span>총 결제 금액</span>
+                <span id="total-payment">0원</span>
+            </div>
+            <button class="order-btn">주문하기</button>
+        </div>
+    </div>
+
+    <script type="module" src="./src/js/App.js"></script>
+</body>
+</html>
